@@ -16,6 +16,12 @@ class BuySerializer(serializers.ModelSerializer):
 
     def examination(self, validate_data):
         product = Product.objects.get(id=id)
-        if product == NotFound:
+        if product == 0:
             raise Exception('Product is not exists')
         product.save()
+
+
+class StoreSupplySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Store
+        fields = '__all__'
